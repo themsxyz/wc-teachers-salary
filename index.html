@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ফি ম্যানেজমেন্ট</title>
+  <!-- Google Fonts: Poppins + Tiro Bangla -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tiro+Bangla&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- pdfmake -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo-area">
+        📘 ফি ম্যানেজমেন্ট <span>PRO</span>
+      </div>
+      <div class="nav-actions">
+        <button class="dark-toggle" id="darkModeToggle" aria-label="Dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <a href="analysis.html"><i class="fas fa-chart-line"></i> Earnings বিশ্লেষণ</a>
+      <a href="sheet.html"><i class="fas fa-table"></i> সব ছাত্র</a>
+      <div class="nav-divider"></div>
+      <a href="mailto:muktadirshabab@hotmail.com"><i class="fas fa-headset"></i> সহায়তা</a>
+    </div>
+  </nav>
 
+<div class="container">
+  <h2><i class="fas fa-hand-holding-usd"></i> ফি ম্যানেজমেন্ট</h2>
+  <div class="sub">ছাত্রদের ফি সংক্রান্ত সব কার্যক্রম</div>
+
+  <!-- SEARCH CARD -->
+  <div class="card">
+    <label for="searchId"><i class="fas fa-id-card"></i> Student ID লিখুন</label>
+    <div class="search-row">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchId" placeholder="যেমন: ST-2025-001" autocomplete="off">
+      </div>
+      <button onclick="searchStudent()" id="searchBtn" class="btn-primary"><i class="fas fa-user-check"></i> সার্চ করুন</button>
+    </div>
+  </div>
+
+  <!-- fee entry card - PROFESSIONAL LAYOUT -->
+  <div class="card" id="feeFormDiv" style="display:none;">
+    <h3><i class="fas fa-receipt"></i> ফি জমা ফর্ম</h3>
+    <label for="month"><i class="far fa-calendar-alt"></i> মাস নির্বাচন</label>
+    <select id="month"></select>
+    <div id="feeInputs" class="fee-form-grid"></div>
+    <div class="button-group">
+      <button onclick="submitFee()" id="submitBtn" class="btn-primary"><i class="fas fa-save"></i> ফি জমা দিন</button>
+      <button onclick="printReceipt()" id="printBtn" class="btn-secondary"><i class="fas fa-print"></i> রশিদ প্রিন্ট</button>
+    </div>
+  </div>
+
+  <!-- NEW ACCOUNT CARD -->
+  <div class="card" id="createFormDiv" style="display:none;">
+    <h3>
+      <span class="create-header-icon"><i class="fas fa-user-graduate"></i></span> 
+      নতুন ছাত্র নিবন্ধন
+    </h3>
+    <div id="accountInputs" class="two-column-grid"></div>
+    <div id="validationErrors" style="color: #e54c4c; margin-bottom: 1rem; font-size: 0.85rem;"></div>
+    <div class="button-group">
+      <button onclick="createAccount()" id="createBtn" class="btn-primary"><i class="fas fa-check-circle"></i> অ্যাকাউন্ট তৈরি করুন</button>
+    </div>
+  </div>
+</div>
+
+<div class="loader-overlay" id="loader">
+  <div class="spinner"></div>
+</div>
+  <script src="script.js"></script>
+
+</body>
+</html>
